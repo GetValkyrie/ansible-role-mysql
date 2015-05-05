@@ -10,13 +10,15 @@
     name: "root"
     host: "{{ item }}"
     password: "{{ mysql_root_password }}"
+    check_implicit_admin: yes
+    config_file: "{{ mysql_root_config_file }}"
   with_items: mysql_root_hosts.stdout_lines
 
 # Has to be after the root password assignment, for idempotency.
 - name: Copy .my.cnf file with root password credentials.
   template:
     src: "user-my.cnf.j2"
-    dest: "{{ mysql_user_home }}/.my.cnf"
+    dest: "{{ mysql_root_config_file }}"
     owner: root
     group: root
     mode: 0600

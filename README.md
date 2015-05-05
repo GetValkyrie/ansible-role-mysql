@@ -12,9 +12,9 @@ None.
 
 Available variables are listed below, along with default values (see `vars/main.yml`):
 
-    mysql_user_home: /root
+    mysql_root_config_file: /root/.my.cnf
 
-The home directory inside which Python MySQL settings will be stored, which Ansible will use when connecting to MySQL. This should be the home directory of the user which runs this Ansible role.
+The file in which MySQL settings will be stored, which Ansible will use when connecting to MySQL.
 
     mysql_root_password: root
 
